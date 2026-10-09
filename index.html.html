@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harish Trading Academy – Free Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Kannada:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#06201f;
+    --bg2:#0a2e2c;
+    --card:#0d3533;
+    --card-line:rgba(94,234,212,.22);
+    --text:#e8f6f3;
+    --muted:#9bbfb9;
+    --teal:#2dd4bf;
+    --green:#5eea9a;
+    --yellow:#fde047;
+    --ink:#062321;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html,body{margin:0}
+  body{
+    font-family:'Outfit','Noto Sans Kannada',system-ui,sans-serif;
+    color:var(--text);
+    background:radial-gradient(1200px 600px at 50% -10%,#0f4a45 0%,var(--bg) 60%) fixed,var(--bg);
+    min-height:100vh;
+    padding:12px 14px calc(24px + env(safe-area-inset-bottom,0px));
+    padding-top:calc(12px + env(safe-area-inset-top,0px));
+    display:flex;justify-content:center;
+  }
+  .wrap{width:100%;max-width:440px}
+  .card{
+    background:linear-gradient(180deg,rgba(13,53,51,.9),rgba(8,38,36,.9));
+    border:1px solid var(--card-line);
+    border-radius:26px;
+    padding:18px 18px 20px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+  }
+  .avatar{
+    width:84px;height:84px;border-radius:50%;
+    border:3px solid var(--teal);
+    padding:3px;margin:0 auto 10px;
+    background:var(--bg2);
+    box-shadow:0 0 0 4px rgba(45,212,191,.12);
+    overflow:hidden;
+  }
+  .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;display:block}
+  h1.brand{font-size:22px;font-weight:700;margin:0 0 8px;letter-spacing:.2px}
+  .badge{
+    display:inline-block;background:var(--yellow);color:#3a2e00;
+    font-weight:700;font-size:13.5px;padding:5px 14px;border-radius:999px;
+    margin-bottom:14px;
+  }
+  .kn-head{
+    font-family:'Noto Sans Kannada',sans-serif;
+    font-weight:800;font-size:23px;line-height:1.35;margin:0 0 10px;
+  }
+  .lead{font-size:16.5px;font-weight:600;margin:0 0 4px;line-height:1.4}
+  .kn-sub{font-family:'Noto Sans Kannada',sans-serif;color:var(--text);font-size:15px;margin:0 0 2px}
+  .en-sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+  .list{list-style:none;margin:20px 0 22px;padding:0;display:grid;gap:12px;text-align:left}
+  .list li{
+    display:flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--card-line);
+    border-radius:16px;padding:14px 16px;
+  }
+  .tick{
+    flex:none;width:34px;height:34px;border-radius:10px;
+    background:rgba(45,212,191,.18);display:grid;place-items:center;
+  }
+  .tick svg{width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .list .kn{font-family:'Noto Sans Kannada',sans-serif;font-size:17px;font-weight:600;line-height:1.4}
+  .list .en{color:var(--muted);font-size:15px}
+  .cta{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    width:100%;padding:16px 18px;border-radius:18px;
+    background:linear-gradient(90deg,#2dd4d0,#5eea9a);
+    color:var(--ink);font-weight:700;font-size:20px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(45,212,191,.35);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(45,212,191,.45)}
+  .cta:active{transform:translateY(1px)}
+  .cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .cta svg{width:24px;height:24px;fill:var(--ink)}
+  .hint{color:var(--muted);font-size:13.5px;margin:10px 0 0}
+  .opening{font-size:13.5px;color:var(--muted);margin:8px 0 0}
+  .opening .kn{font-family:'Noto Sans Kannada',sans-serif;display:block;font-size:16px;color:var(--text)}
+  .opening[hidden]{display:none}
+  .free{color:var(--muted);font-size:14.5px;margin:0}
+  .disclaimer{
+    margin-top:18px;padding:16px 18px;border-radius:18px;
+    background:rgba(253,224,71,.06);border:1px solid rgba(253,224,71,.25);
+    font-size:15px;line-height:1.7;color:var(--text);text-align:left;
+  }
+  footer{margin-top:22px;text-align:center;font-size:14.5px;line-height:1.6;color:var(--muted)}
+  footer p{margin:0}
+  footer a{color:var(--text);text-decoration:underline}
+  .disclaimer b{color:var(--yellow)}
+  .disclaimer p{margin:0 0 8px}
+  .disclaimer p:last-child{margin:0}
+  .kn-text{font-family:'Noto Sans Kannada',sans-serif}
+  @media (max-width:360px){
+    .kn-head{font-size:20px}
+    .cta{font-size:18px}
+    .list .kn{font-size:15.5px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1576775297528149');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1576775297528149&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<main class="wrap">
+  <section class="card">
+    <div class="avatar">
+      <!-- Apni photo yahan lagayein: src="your-photo.jpg" -->
+      <img alt="Harish Trading Academy" src="data:image/jpeg;base64,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">
+    </div>
+
+    <h1 class="brand">Harish Trading Academy</h1>
+    <span class="badge">ಉಚಿತ ಕಲಿಕೆ • FREE LEARNING</span>
+
+    <h2 class="kn-head">ಷೇರು ಮಾರುಕಟ್ಟೆಯನ್ನು ಕನ್ನಡದಲ್ಲಿ ಸರಳವಾಗಿ ಕಲಿಯಿರಿ</h2>
+    <p class="lead">Learn the stock market simply, in Kannada</p>
+    <p class="kn-sub">ಆರಂಭಿಕರಿಗಾಗಿ ಹಂತ ಹಂತವಾದ ಪಾಠಗಳು</p>
+    <p class="en-sub">Step-by-step lessons for beginners</p>
+
+    <ul class="list">
+      <li>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <span><span class="kn">ಚಾರ್ಟ್ ಓದುವ ಮೂಲಭೂತಗಳು</span><br><span class="en">Chart reading basics</span></span>
+      </li>
+      <li>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <span><span class="kn">ಸಪೋರ್ಟ್ ಮತ್ತು ರೆಸಿಸ್ಟೆನ್ಸ್</span><br><span class="en">Support &amp; resistance</span></span>
+      </li>
+      <li>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <span><span class="kn">ರಿಸ್ಕ್ ಮ್ಯಾನೇಜ್‌ಮೆಂಟ್ ಮತ್ತು ಸ್ಟಾಪ್-ಲಾಸ್</span><br><span class="en">Risk management &amp; stop-loss</span></span>
+      </li>
+    </ul>
+
+    <!-- Apna Telegram channel link yahan badlein -->
+    <a id="join" class="cta" href="https://t.me/+zuDxjYy1jTViNzA1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 3.6a1 1 0 0 0-1-.2L2.7 10.5a1 1 0 0 0 .1 1.9l4.6 1.5 1.8 5.6a1 1 0 0 0 1.7.4l2.5-2.7 4.6 3.4a1 1 0 0 0 1.6-.6L22 4.6a1 1 0 0 0-.1-1zM9.7 14.1l8.2-5.8-6.3 6.7-.3 2.9z"/></svg>
+      Join Free Telegram Channel
+    </a>
+    <p class="hint">Opens in the Telegram app · Takes 2 seconds</p>
+    <p class="opening" id="opening" hidden><span class="kn">ಚಾನೆಲ್ ತೆರೆಯುತ್ತಿದೆ...</span>Opening channel...</p>
+    <p class="free">100% Free · No payment · Leave anytime</p>
+  </section>
+
+  <aside class="disclaimer">
+    <p class="kn-text"><b>ಹಕ್ಕು ನಿರಾಕರಣೆ:</b> ಇಲ್ಲಿನ ಎಲ್ಲಾ ವಿಷಯವು ಶೈಕ್ಷಣಿಕ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮಾತ್ರ. ಇದು ಹೂಡಿಕೆ ಸಲಹೆ ಅಥವಾ ಖರೀದಿ/ಮಾರಾಟದ ಶಿಫಾರಸು ಅಲ್ಲ. ನಾವು SEBI ನೋಂದಾಯಿತ ಸಲಹೆಗಾರರಲ್ಲ. ಟ್ರೇಡಿಂಗ್‌ನಲ್ಲಿ ಹಣ ಕಳೆದುಕೊಳ್ಳುವ ಅಪಾಯವಿದೆ.</p>
+    <p><b>Disclaimer:</b> All content is for educational purposes only and is not investment advice or a buy/sell recommendation. We are not SEBI-registered advisors. Trading involves risk, including loss of capital. Past performance does not guarantee future results.</p>
+  </aside>
+
+  <footer>
+    <p>© 2026 Harish Trading Academy · <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms</a></p>
+    <p>This site is not a part of the Facebook website or Meta Platforms, Inc.</p>
+  </footer>
+</main>
+<script>
+  document.getElementById('join').addEventListener('click',function(){
+    var o=document.getElementById('opening');
+    try{ if(window.fbq) fbq('track','Lead'); }catch(e){}
+    o.hidden=false;
+    setTimeout(function(){o.hidden=true},4000);
+  });
+</script>
+</body>
+</html>
